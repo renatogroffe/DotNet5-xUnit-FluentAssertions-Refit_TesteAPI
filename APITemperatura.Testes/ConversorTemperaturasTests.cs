@@ -17,11 +17,12 @@ namespace APITemperatura.Testes
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile($"appsettings.json");
+                .AddJsonFile($"appsettings.json")
+                .AddEnvironmentVariables();
             var configuration = builder.Build();
 
             _apiConvTemperaturas = RestService.For<IConversorTemperaturasAPI>(
-                configuration["UrlWebApp"]);
+                configuration["UrlWebAppTestes"]);
         }
 
         [Theory]
